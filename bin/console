@@ -3,5 +3,9 @@
 require_relative "../config/environment"
 require "bundler/setup"
 
+def reload!
+  load_all './lib'
+end
+
 require "pry"
 Pry.start(__FILE__)
