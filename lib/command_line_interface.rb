@@ -1,7 +1,6 @@
 class CommandLineInterface
 
   def run
-    binding.pry
     Browser.run
     puts "Welcome to Nutrition Information"
     puts "Enter 'list' to list the top foods."
