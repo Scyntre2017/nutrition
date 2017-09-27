@@ -1,7 +1,8 @@
 class CommandLineInterface
 
   def run
-    Phantom.run
+    binding.pry
+    Browser.run
     puts "Welcome to Nutrition Information"
     puts "Enter 'list' to list the top foods."
     puts "Enter 'search' to search for your own food."
@@ -32,6 +33,9 @@ class CommandLineInterface
     input = gets.strip
     if input.downcase == "main"
       run
+    elsif input.downcase == "exit"
+      Browser.quit
+      exit
     elsif input.to_i > 0
       nutrition_information(input.to_i - 1)
     end
@@ -87,6 +91,9 @@ class CommandLineInterface
         choice
       elsif input.downcase == "main"
         run
+      elsif input.downcase == "exit"
+        Browser.quit
+        exit
       end
     end
   end

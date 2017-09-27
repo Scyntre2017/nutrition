@@ -1,17 +1,17 @@
 class Scraper
 
   def self.scrape_food_list(list_url)
-    Phantom.goto(list_url)
-    doc = Nokogiri::HTML.parse(Phantom.html)
+    Browser.goto(list_url)
+    doc = Nokogiri::HTML.parse(Browser.html)
     foods = []
 
-    if Phantom.exists?(css: ".foodUrl a")
+    if Browser.exists?(css: ".foodUrl a")
       doc.css(".foodUrl a").each do |food|
         url = "http://nutritiondata.self.com" + food.attribute("href").value.gsub(" ", "")
         name = food.text
         foods << {name: name, url: url}
       end
-    elsif Phantom.exists?(css: ".menuaddOptions a")
+    elsif Browser.exists?(css: ".menuaddOptions a")
       doc.css(".note2 > a").each do |food|
         url = "http://nutritiondata.self.com" + food.attribute("href").value.gsub(" ", "")
         name = food.text
@@ -23,9 +23,9 @@ class Scraper
   end
 
   def self.scrape_nutrition_information(url)
-    Phantom.goto(url)
-    if Phantom.exists?(css: ".mediumSummary")
-      doc = Nokogiri::HTML.parse(Phantom.html)
+    Browser.goto(url)
+    if Browser.exists?(css: ".mediumSummary")
+      doc = Nokogiri::HTML.parse(Browser.html)
       info = {}
       info[:serving_size] = doc.css("form.size select option").select { |option| option.first.first == "selected" }.first.text
       info[:carbs] = doc.css("td.carbs").text

@@ -44,12 +44,12 @@ class Food
 
   def self.search(searched_food)
     self.clear
-    Phantom.set(searched_food)
-    Phantom.click(css: ".searchNow")
-    self.create_foods(Phantom.url)
-    if Phantom.exists?(css: "a[title =\"Next\"]")
-      Phantom.click(css: "a[title =\"Next\"]")
-      self.create_foods(Phantom.url)
+    Browser.set(searched_food)
+    Browser.click(css: ".searchNow")
+    self.create_foods(Browser.url)
+    if Browser.exists?(css: "a[title =\"Next\"]")
+      Browser.click(css: "a[title =\"Next\"]")
+      self.create_foods(Browser.url)
     end
   end
 

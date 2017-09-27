@@ -1,6 +1,6 @@
-class Phantom
+class Browser
 
-  @@browser = Watir::Browser.start("http://nutritiondata.self.com", :phantomjs)
+  @@browser = Watir::Browser.start("http://nutritiondata.self.com", :chrome, headless: true)
 
   def self.run
     @@browser
@@ -28,5 +28,9 @@ class Phantom
 
   def self.exists?(css_element)
     @@browser.element(css_element).exists?
+  end
+
+  def self.quit
+    @@browser.quit
   end
 end
