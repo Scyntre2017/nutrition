@@ -20,7 +20,7 @@ GEM
     watir (6.8.4)
       selenium-webdriver (~> 3.4, >= 3.4.1)
     webdrivers (3.2.1)
-      nokogiri (~> 1.6)
+      nokogiri (~> 1.8.2)
       rubyzip (~> 1.0)
       selenium-webdriver (~> 3.0)
 
