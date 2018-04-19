@@ -7,6 +7,6 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem 'require_all'
 gem 'pry'
-gem 'nokogiri'
+gem 'nokogiri' ~> 1.8.2
 gem 'watir'
 gem 'webdrivers'
